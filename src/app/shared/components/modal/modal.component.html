@@ -1,0 +1,27 @@
+@if (isOpened()) {
+<div role="button" class="fixed bg-gray-800/30 top-0 left-0 w-full h-full z-50" (click)="onCloseModal($event)">
+  <article @modal class="relative top-16 left-1/2 -translate-x-1/2 bg-white w-2/5 rounded-lg">
+    <div class="flex justify-end p-3 border-b border-primary-light/50">
+      <button (click)="onCloseModal($event)" class="cursor-pointer">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4 items-center p-4">
+      <div class="px-3">
+        <h2 class="text-3xl font-bold text-pretty mb-2">{{brand?.name}}</h2>
+        <span class="inline-block">{{brand?.slug}}</span>
+      </div>
+      <div>
+        <img [src]="brand?.image" [alt]="brand?.name" class="w-full h-full">
+      </div>
+    </div>
+
+    <div class="flex justify-end p-2 border-t border-primary-light/50">
+      <button (click)="onCloseModal($event)" class="btn-close">
+        close
+      </button>
+    </div>
+  </article>
+</div>
+}

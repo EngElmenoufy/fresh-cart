@@ -1,0 +1,6 @@
+<app-card (clickCard)="onClickCard($event)">
+  <div>
+    <img [src]="category.image" [alt]="category.name" class="h-[250px] w-full object-center object-cover">
+  </div>
+  <h4 class="text-center text-2xl text-primary py-4">{{category.name}}</h4>
+</app-card>

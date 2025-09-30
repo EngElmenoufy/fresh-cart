@@ -1,0 +1,42 @@
+<section class="form">
+  <h2>Register</h2>
+
+  <!-- <app-input [inputData]="{
+    'title': 'name',
+    'type': 'text',
+    'control': registerForm.get('name')
+    }" /> -->
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="my-4">
+      <label for="name">Your Name</label>
+      <input id="name" type="text" class="input w-full" placeholder="Enter Your Name" formControlName="name">
+      <app-errors-message [control]="registerForm.get('name')" />
+    </div>
+
+    <div class="my-4">
+      <label for="email">Your Email</label>
+      <input id="email" type="email" class="input w-full" placeholder="Enter Your Email" formControlName="email">
+      <app-errors-message [control]="registerForm.get('email')" />
+    </div>
+
+    <div class="my-4">
+      <label for="password">Your Password</label>
+      <input id="password" type="password" class="input w-full" placeholder="Enter Your password"
+        formControlName="password">
+      <app-errors-message [control]="registerForm.get('password')" />
+    </div>
+
+    <div class="my-4">
+      <label for="rePassword">RePassword</label>
+      <input id="rePassword" type="password" class="input w-full" placeholder="Enter Your password"
+        formControlName="rePassword">
+      <app-errors-message [control]="registerForm" />
+    </div>
+
+    <app-button [isLoading]="isLoading">
+      Register
+    </app-button>
+  </form>
+
+</section>

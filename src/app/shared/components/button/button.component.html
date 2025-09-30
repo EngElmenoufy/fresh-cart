@@ -1,0 +1,7 @@
+<button type="submit" [disabled]="isLoading" class="btn w-full flex items-center justify-center gap-2">
+  @if (isLoading) {
+  <span class="spinner inline-block"></span>
+  } @else {
+  <ng-content />
+  }
+</button>

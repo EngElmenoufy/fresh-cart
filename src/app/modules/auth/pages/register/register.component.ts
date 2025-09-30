@@ -1,0 +1,70 @@
+import { Component, inject } from '@angular/core';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { ErrorsMessageComponent } from '../../../../shared/components/errors-message/errors-message.component';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { ButtonComponent } from '../../../../shared/components/button/button.component';
+import { InputComponent } from '../../../../shared/components/input/input.component';
+import { mismatch } from '../../../../shared/helpers/password-mismatch';
+
+@Component({
+  selector: 'app-register',
+  imports: [
+    ReactiveFormsModule,
+    ErrorsMessageComponent,
+    ButtonComponent,
+    InputComponent,
+  ],
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.css',
+})
+export class RegisterComponent {
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
+  private token!: string;
+  isLoading = false;
+
+  registerForm = new FormGroup(
+    {
+      name: new FormControl('', [Validators.minLength(3), Validators.required]),
+      email: new FormControl('', [Validators.email, Validators.required]),
+      password: new FormControl('', [
+        Validators.pattern(
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+        ),
+        Validators.required,
+      ]),
+      rePassword: new FormControl(''),
+    },
+    { validators: mismatch }
+  );
+
+  onSubmit() {
+    if (this.registerForm.valid) {
+      // this.registerForm.markAllAsTouched()
+      this.isLoading = true;
+      this.authService.register(this.registerForm.value).subscribe({
+        next: (res: any) => {
+          this.token = res.token;
+          if (res.message === 'success') {
+            this.router.navigate(['/login']);
+            this.isLoading = false;
+          }
+          this.registerForm.reset();
+        },
+        error: (err) => {
+          console.error(err.error.message);
+          this.isLoading = false;
+        },
+      });
+    } else {
+      this.registerForm.markAllAsTouched();
+    }
+  }
+}

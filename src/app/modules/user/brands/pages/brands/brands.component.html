@@ -1,0 +1,11 @@
+<section>
+  <app-main-header title="All Brands" />
+
+  <app-responsive>
+    @for (brand of brands; track brand._id) {
+    <app-brand-card [brand]="brand" (brandDetails)="onBrandDetails($event)" />
+    }
+  </app-responsive>
+</section>
+
+<app-modal [(isOpened)]="isOpenModel" [brand]="selectedBrand" />

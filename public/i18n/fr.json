@@ -1,0 +1,11 @@
+{
+  "nav": {
+    "products": "Produits",
+    "categories": "Catégories",
+    "brands": "Marques",
+    "cart": "Panier",
+    "logout": "Se déconnecter",
+    "login": "Connexion",
+    "register": "Créer un compte"
+  }
+}

@@ -1,0 +1,32 @@
+<div class="w-full mb-6 grid grid-cols-12 gap-4 bg-white p-2 sm:py-4 sm:px-6 rounded-lg">
+  <div class="col-span-6 sm:col-span-3">
+    <img [src]="product.imageCover" [alt]="product.title" class="h-44 w-full object-center object-contain">
+  </div>
+  <div class="col-span-6 sm:col-span-9 flex flex-col justify-between gap-4">
+    <div class="py-4">
+      <h3 class="text-lg sm:text-2xl font-semibold text-primary mb-3 line-clamp-1">
+        <a [routerLink]="['/product-details', product._id]" class="hover:underline">{{product.title}}</a>
+      </h3>
+      <p class="text-gray-600 sm:text-lg font-bold">{{productPrice | currency:'GBP'}}</p>
+    </div>
+    <div class="flex justify-between">
+      <button class="btn-danger not-sm:py-1 not-sm:px-2" (click)="onRemoveItem()"><i class="fa-solid fa-trash"></i>
+        <span class="hidden sm:inline-block ml-2">Remove</span></button>
+      @if (hasChangeQuantity) {
+      <div class="flex items-center gap-2">
+        <button [disabled]="count===product.quantity" class="btn-secondary btn-disabled py-1 px-2 w-7"
+          (click)="onChangeQty(count+1)">+</button>
+        {{count}}
+        <button [disabled]="count===1" class="btn-secondary btn-disabled py-1 px-2 w-7"
+          (click)="onChangeQty(count-1)">-</button>
+      </div>
+      } @else {
+      <button class="btn-secondary self-end font-semibold whitespace-nowrap not-sm:py-1 not-sm:px-2"
+        (click)="onAddToCart()"><i class="fa-solid fa-cart-plus sm:hidden"></i><span
+          class="hidden sm:inline-block ml-2">Add
+          to
+          cart</span></button>
+      }
+    </div>
+  </div>
+</div>

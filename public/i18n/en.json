@@ -1,0 +1,11 @@
+{
+  "nav": {
+    "products": "Products",
+    "categories": "Categories",
+    "brands": "Brands",
+    "cart": "Cart",
+    "logout": "Logout",
+    "login": "Login",
+    "register": "Register"
+  }
+}

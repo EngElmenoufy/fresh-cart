@@ -1,0 +1,9 @@
+<section>
+  <app-main-header title="All Categories" />
+
+  <app-responsive>
+    @for (category of categories; track category._id) {
+    <app-category-card [category]="category" (getSubtitle)="onGetSubtitle($event)" />
+    }
+  </app-responsive>
+</section>

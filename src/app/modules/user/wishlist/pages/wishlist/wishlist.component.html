@@ -1,0 +1,15 @@
+<section class="md:w-3/4 mx-auto">
+  <div class="mx-6">
+    @if (products.length !== 0) {
+    <app-main-header title="My Wish List" />
+    }
+
+    @for (product of products; track product._id) {
+    <app-list-card [product]="product" (addToCart)="onAddToCart($event)" (removeItem)="onRemoveItem($event)" />
+    } @empty {
+    @if (!isLoadingService.isLoading()) {
+    <app-page-empty title="Wish List" />
+    }
+    }
+  </div>
+</section>

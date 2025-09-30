@@ -1,0 +1,13 @@
+<div class="py-5">
+  <owl-carousel-o [options]="categoriesSliderOptions">
+
+    @for (category of categories; track category._id) {
+    <ng-template carouselSlide [id]="category._id">
+      <img [src]="category.image" [alt]="category.name" [title]="category.slug" class="h-[300px]">
+      <h3 class="text-2xl font-semibold">{{category.name}}</h3>
+    </ng-template>
+    }
+
+  </owl-carousel-o>
+
+</div>

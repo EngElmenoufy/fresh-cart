@@ -1,0 +1,21 @@
+<section class="form">
+  <h2>Login</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <div class="my-4">
+      <label for="email">Your Email</label>
+      <input id="email" type="email" placeholder="Enter Your Email" class="input w-full" formControlName="email">
+      <app-errors-message [control]="loginForm.get('email')" />
+    </div>
+
+    <div class="my-4">
+      <label for="password">Your Password</label>
+      <input id="password" type="password" placeholder="Enter Your Password" class="input w-full"
+        formControlName="password">
+      <app-errors-message [control]="loginForm.get('password')" />
+    </div>
+
+    <app-button [isLoading]="isLoading">
+      Login
+    </app-button>
+  </form>
+</section>
