@@ -10,7 +10,10 @@ export const errorHandlerInterceptor: HttpInterceptorFn = (req, next) => {
     catchError((err: HttpErrorResponse) => {
       let errorMessage = 'An unexpected error occurred';
 
-      if (err.error instanceof ErrorEvent) {
+      if (
+        typeof ErrorEvent !== 'undefined' &&
+        err.error instanceof ErrorEvent
+      ) {
         errorMessage = `Client error ${err.error.message}`;
       } else {
         switch (err.status) {

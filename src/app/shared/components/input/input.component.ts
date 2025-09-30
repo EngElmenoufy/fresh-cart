@@ -1,15 +1,9 @@
-import { Component, Input } from '@angular/core';
-import { ErrorsMessageComponent } from '../errors-message/errors-message.component';
-import {
-  AbstractControl,
-  FormControl,
-  ReactiveFormsModule,
-} from '@angular/forms';
-import { TitleCasePipe } from '@angular/common';
+import { Component } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
-  imports: [ErrorsMessageComponent, ReactiveFormsModule, TitleCasePipe],
+  imports: [ReactiveFormsModule],
   templateUrl: './input.component.html',
   styleUrl: './input.component.css',
 })

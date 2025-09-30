@@ -1,22 +1,16 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { IsLoadingService } from '../../../../../core/services/is-loading.service';
+import { WishlistCardComponent } from '../../../../../shared/components/list-card/list-card.component';
 import { MainHeaderComponent } from '../../../../../shared/components/main-header/main-header.component';
+import { PageEmptyComponent } from '../../../../../shared/components/page-empty/page-empty.component';
 import { Product } from '../../../products/models/product.interface';
 import { CartService } from './../../../cart/services/cart.service';
 import { WishlistService } from './../../services/wishlist.service';
-import { ToastrService } from 'ngx-toastr';
-import { WishlistCardComponent } from '../../../../../shared/components/list-card/list-card.component';
-import { RouterLink } from '@angular/router';
-import { IsLoadingService } from '../../../../../core/services/is-loading.service';
-import { PageEmptyComponent } from '../../../../../shared/components/page-empty/page-empty.component';
 
 @Component({
   selector: 'app-wish-list',
-  imports: [
-    MainHeaderComponent,
-    WishlistCardComponent,
-    RouterLink,
-    PageEmptyComponent,
-  ],
+  imports: [MainHeaderComponent, WishlistCardComponent, PageEmptyComponent],
   templateUrl: './wishlist.component.html',
   styleUrl: './wishlist.component.css',
 })

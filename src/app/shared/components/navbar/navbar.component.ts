@@ -29,7 +29,9 @@ export class NavbarComponent {
   // HIGHLIGHT
 
   ngOnInit(): void {
-    this.getUserCart();
+    if (this.authService.isLoggedIn()) {
+      this.getUserCart();
+    }
   }
 
   getUserCart() {

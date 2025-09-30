@@ -1,26 +1,19 @@
 import { Component, inject } from '@angular/core';
 import {
-  AbstractControl,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ErrorsMessageComponent } from '../../../../shared/components/errors-message/errors-message.component';
-import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
-import { InputComponent } from '../../../../shared/components/input/input.component';
+import { ErrorsMessageComponent } from '../../../../shared/components/errors-message/errors-message.component';
 import { mismatch } from '../../../../shared/helpers/password-mismatch';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register',
-  imports: [
-    ReactiveFormsModule,
-    ErrorsMessageComponent,
-    ButtonComponent,
-    InputComponent,
-  ],
+  imports: [ReactiveFormsModule, ErrorsMessageComponent, ButtonComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })

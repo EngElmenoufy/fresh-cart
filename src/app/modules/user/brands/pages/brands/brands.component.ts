@@ -1,19 +1,16 @@
-import { finalize } from 'rxjs';
 import { Component, inject, OnInit } from '@angular/core';
-import { BrandsService } from '../../services/brands.service';
-import { Brand } from '../../models/brand.interface';
-import { ModalComponent } from '../../../../../shared/components/modal/modal.component';
 import { MainHeaderComponent } from '../../../../../shared/components/main-header/main-header.component';
-import { RegisterComponent } from '../../../../auth/pages/register/register.component';
+import { ModalComponent } from '../../../../../shared/components/modal/modal.component';
 import { ResponsiveComponent } from '../../../../../shared/components/responsive/responsive.component';
 import { ListCardComponent } from '../../components/brand-card/brand-card.component';
+import { Brand } from '../../models/brand.interface';
+import { BrandsService } from '../../services/brands.service';
 
 @Component({
   selector: 'app-brands',
   imports: [
     ModalComponent,
     MainHeaderComponent,
-    RegisterComponent,
     ResponsiveComponent,
     ListCardComponent,
   ],
