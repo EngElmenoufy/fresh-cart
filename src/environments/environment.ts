@@ -1,4 +1,4 @@
 export const environment = {
-  baseUrl: 'http://localhost:4200',
+  baseUrl: 'https://fresh-cart-blond-pi.vercel.app',
   apiUrl: 'https://ecommerce.routemisr.com/api/v1/',
 };
