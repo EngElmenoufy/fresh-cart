@@ -1,1 +1,13 @@
-<p>address works!</p>
+<section class="form">
+  <h2>Address</h2>
+
+  <form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+    <app-input label="details" [control]="addressForm.get('details')" />
+    <app-input label="phone" type="tel" [control]="addressForm.get('phone')" />
+    <app-input label="city" [control]="addressForm.get('city')" />
+
+    <app-button [isLoading]="isLoading">
+      Pay Now
+    </app-button>
+  </form>
+</section>

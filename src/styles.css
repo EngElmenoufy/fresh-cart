@@ -50,7 +50,7 @@
   }
 
   .form {
-    @apply max-w-lg mx-auto my-7 p-5 border border-gray-400 rounded-lg shadow-lg;
+    @apply max-w-lg mx-auto p-5 border border-gray-400 rounded-lg shadow-lg;
   }
 
   .form h2 {
@@ -68,4 +68,8 @@
 
 body {
   @apply bg-accent;
+}
+
+.owl-theme .owl-nav.disabled + .owl-dots {
+  transform: translateY(-40px);
 }

@@ -7,6 +7,7 @@ import { CurrencyPipe } from '@angular/common';
 import { WishlistCardComponent } from '../../../../../shared/components/list-card/list-card.component';
 import { ToastrService } from 'ngx-toastr';
 import { PageEmptyComponent } from '../../../../../shared/components/page-empty/page-empty.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cart-list',
@@ -15,6 +16,7 @@ import { PageEmptyComponent } from '../../../../../shared/components/page-empty/
     CurrencyPipe,
     WishlistCardComponent,
     PageEmptyComponent,
+    RouterLink,
   ],
   templateUrl: './cart-list.component.html',
   styleUrl: './cart-list.component.css',
@@ -25,13 +27,13 @@ export class CartListComponent implements OnInit {
   readonly isLoadingService = inject(IsLoadingService);
 
   products: any[] = [];
+  cartId: string | undefined = undefined;
   numOfCartItems: number = 0;
   totalCartPrice: number = 0;
 
   ngOnInit(): void {
     this.cartService.getUserCart().subscribe({
       next: (res) => {
-        console.log(res);
         this.setData(res);
       },
     });
@@ -48,9 +50,9 @@ export class CartListComponent implements OnInit {
   }
 
   setData(res: any) {
+    this.cartId = res.cartId;
     this.numOfCartItems = res.numOfCartItems;
     this.products = res.data.products;
-    console.log(this.products);
     this.totalCartPrice = res.data.totalCartPrice;
   }
 
@@ -68,6 +70,7 @@ export class CartListComponent implements OnInit {
     this.products = [];
     this.numOfCartItems = 0;
     this.totalCartPrice = 0;
+    this.cartId = undefined;
     this.cartService.cartCounter.set(0);
   }
 

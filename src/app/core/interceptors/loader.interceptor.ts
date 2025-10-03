@@ -15,6 +15,7 @@ export const loaderInterceptor: HttpInterceptorFn = (req, next) => {
     finalize(() => {
       spinner.hide();
       isLoadingService.isLoading.set(false);
+      isLoadingService.loadingFor.set(req.url.split('/').at(-1));
     })
   );
 };

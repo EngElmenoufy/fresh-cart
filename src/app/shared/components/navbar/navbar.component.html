@@ -1,4 +1,4 @@
-<nav class="bg-primary py-2 px-4 md:px-6 relative z-20">
+<nav class="bg-primary py-2 z-20 fixed top-0 w-full">
   <div class="container flex justify-between">
     <a routerLink="/">
       <img src="/SmartCart.png" alt="fresh cart logo" class="h-11">
@@ -9,6 +9,14 @@
     </button>
 
     <div [class]="{
+      'menu-opened': isMenuOpened(),
+      'menu-closed': !isMenuOpened()
+    }" class="fixed top-[60px] transition-opacity left-0 h-screen bg-gray-500/40 -z-30"
+      (click)="isMenuOpened.set(false)">
+
+    </div>
+
+    <div [class]="{
     'start-0': isMenuOpened(),
     }"
       class="links fixed md:static top-[60px] -start-full bg-gray-200 md:bg-transparent w-full px-6 py-4 md:p-0 flex flex-col md:flex-row md:justify-between md:items-center md:text-white gap-4 font-semibold">
@@ -16,37 +24,42 @@
       @if (!isAuth) {
       <ul class="flex flex-col md:flex-row md:justify-between gap-4">
         <li>
-          <a class="nav-link" routerLink="/products" routerLinkActive="nav-link-active">Products</a>
+          <a class="nav-link" (click)="onNavigate()" routerLink="/products"
+            routerLinkActive="nav-link-active">Products</a>
         </li>
         <li>
-          <a class="nav-link" routerLink="/categories" routerLinkActive="nav-link-active">Categories</a>
+          <a class="nav-link" (click)="onNavigate()" routerLink="/categories"
+            routerLinkActive="nav-link-active">Categories</a>
         </li>
         <li>
-          <a class="nav-link" routerLink="/brands" routerLinkActive="nav-link-active">Brands</a>
+          <a class="nav-link" (click)="onNavigate()" routerLink="/brands" routerLinkActive="nav-link-active">Brands</a>
         </li>
         <li>
-          <a class="nav-link" routerLink="/wishlist" routerLinkActive="nav-link-active">Wish List</a>
+          <a class="nav-link" (click)="onNavigate()" routerLink="/wishlist" routerLinkActive="nav-link-active">Wish
+            List</a>
         </li>
       </ul>
       }
 
-      <ul class=" flex flex-col md:flex-row md:justify-between gap-4">
+      <ul class="flex flex-col md:flex-row md:justify-between gap-4">
         @if (isAuth) {
         <li>
-          <a class="nav-link" routerLink="/login" routerLinkActive="nav-link-active">Login</a>
+          <a class="nav-link" (click)="onNavigate()" routerLink="/login" routerLinkActive="nav-link-active">Login</a>
         </li>
         <li>
-          <a class="nav-link" routerLink="/register" routerLinkActive="nav-link-active">Register</a>
+          <a class="nav-link" (click)="onNavigate()" routerLink="/register"
+            routerLinkActive="nav-link-active">Register</a>
         </li>
         } @else {
-        <li class="relative w-fit">
+        <li class="relative md:w-fit">
           <span
-            class="absolute -top-1/2 text-sm -right-1 translate-y-1/2 inline-block py-0.5 px-1 rounded-2xl bg-yellow-600">{{cartCounter()}}</span>
-          <a class="cursor-pointer nav-link text-xl" routerLink="/cart" routerLinkActive="nav-link-active"><i
-              class="fa-solid fa-cart-shopping"></i></a>
+            class="absolute -top-1/2 text-sm -right-1 translate-y-1/2 hidden md:inline-block py-0.5 px-1 rounded-2xl bg-yellow-600">{{cartCounter()}}</span>
+          <a class="cursor-pointer nav-link" (click)="onNavigate()" routerLink="/cart"
+            routerLinkActive="nav-link-active"><span class="hidden md:inline"><i
+                class="text-xl fa-solid fa-cart-shopping"></i></span><span class="md:hidden">Cart</span></a>
         </li>
         <li>
-          <button (click)="onLogout()" type="button" class="cursor-pointer nav-link">Logout</button>
+          <button (click)="onLogout()" type="button" class="cursor-pointer nav-link text-start">Logout</button>
         </li>
         }
       </ul>

@@ -2,7 +2,7 @@
   @if (products.length > 0) {
   <app-main-header title="Cart Shop" />
 
-  <div class="mx-6 bg-gray-200 p-6 rounded-lg">
+  <div class="mx-2 md:mx-6 bg-gray-200 p-4 md:p-6 rounded-lg">
     <div class="mb-4 flex flex-col sm:flex-row justify-between">
       <div class="text-lg sm:text-xl font-semibold">
         <div>
@@ -14,7 +14,9 @@
         </div>
       </div>
 
-      <button class="btn w-full sm:w-auto my-2 sm:my-0 self-end whitespace-nowrap">Check Out</button>
+      <button class="btn w-full sm:w-auto my-2 sm:my-0 self-end whitespace-nowrap"
+        [routerLink]="['/address', cartId]">Check
+        Out</button>
     </div>
 
     <div>
@@ -28,7 +30,7 @@
       <button class="btn-secondary text-lg font-semibold" (click)="onClearCart()">Clear You Cart</button>
     </div>
   </div>
-  } @else if (!isLoadingService.isLoading() && products.length === 0) {
+  } @else if (!isLoadingService.isLoading() && isLoadingService.loadingFor() === 'cart' && products.length === 0) {
   <app-page-empty title="Cart" />
   }
 </section>

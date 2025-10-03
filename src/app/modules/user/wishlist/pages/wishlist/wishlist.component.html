@@ -4,12 +4,14 @@
     <app-main-header title="My Wish List" />
     }
 
-    @for (product of products; track product._id) {
-    <app-list-card [product]="product" (addToCart)="onAddToCart($event)" (removeItem)="onRemoveItem($event)" />
-    } @empty {
-    @if (!isLoadingService.isLoading()) {
-    <app-page-empty title="Wish List" />
-    }
-    }
+    <div [class.bg-gray-200]="products.length" class="mx-2 md:mx-6 px-4 md:px-6 py-8 rounded-lg">
+      @for (product of products; track product._id) {
+      <app-list-card [product]="product" (addToCart)="onAddToCart($event)" (removeItem)="onRemoveItem($event)" />
+      } @empty {
+      @if (!isLoadingService.isLoading()) {
+      <app-page-empty title="Wish List" />
+      }
+      }
+    </div>
   </div>
 </section>

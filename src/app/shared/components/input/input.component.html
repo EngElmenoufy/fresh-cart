@@ -1,6 +1,5 @@
-<!-- <div class="my-4">
-  <label [for]="inputData.title" class="font-semibold block mb-2">Your {{inputData.title | titlecase}}</label>
-  <input [id]="inputData.title" [type]="inputData.type" class="input w-full"
-    [placeholder]="'Enter Your ' + inputData.title" [formControl]="control">
-  <app-errors-message [control]="control" />
-</div> -->
+<div class="my-4">
+  <label [for]="label" class="font-semibold block mb-2">Your {{label | titlecase}}</label>
+  <input [id]="label" [type]="type" class="input w-full" [placeholder]="'Enter Your ' + label" [formControl]="control">
+  <app-errors-message [control]="control" [label]="label" />
+</div>

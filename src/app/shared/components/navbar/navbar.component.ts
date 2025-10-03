@@ -8,7 +8,7 @@ import {
   OnInit,
   signal,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { RouterLinkActive } from '@angular/router';
 import { CartService } from '../../../modules/user/cart/services/cart.service';
 
@@ -22,6 +22,7 @@ export class NavbarComponent {
   @Input() isAuth = false;
   private readonly authService = inject(AuthService);
   private readonly cartService = inject(CartService);
+  private readonly router = inject(Router);
 
   cartCounter = computed(() => this.cartService.cartCounter());
   isMenuOpened = signal(false);
@@ -30,7 +31,9 @@ export class NavbarComponent {
 
   ngOnInit(): void {
     if (this.authService.isLoggedIn()) {
-      this.getUserCart();
+      setTimeout(() => {
+        this.getUserCart();
+      }, 0);
     }
   }
 
@@ -47,6 +50,10 @@ export class NavbarComponent {
     if (window.outerWidth >= 768) {
       this.isMenuOpened.set(false);
     }
+  }
+
+  onNavigate(): void {
+    this.isMenuOpened.set(false);
   }
 
   onToggleMenu() {

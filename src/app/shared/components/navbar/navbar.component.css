@@ -1,3 +1,13 @@
 .links {
   transition: inset-inline-start 0.2s ease-in-out;
 }
+
+.menu-opened {
+  width: 100vw;
+  opacity: 1;
+}
+
+.menu-closed {
+  width: 0;
+  opacity: 0;
+}

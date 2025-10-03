@@ -10,10 +10,16 @@ import { ButtonComponent } from '../../../../shared/components/button/button.com
 import { ErrorsMessageComponent } from '../../../../shared/components/errors-message/errors-message.component';
 import { mismatch } from '../../../../shared/helpers/password-mismatch';
 import { AuthService } from '../../services/auth.service';
+import { InputComponent } from '../../../../shared/components/input/input.component';
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule, ErrorsMessageComponent, ButtonComponent],
+  imports: [
+    ReactiveFormsModule,
+    ErrorsMessageComponent,
+    ButtonComponent,
+    InputComponent,
+  ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
@@ -50,10 +56,6 @@ export class RegisterComponent {
             this.isLoading = false;
           }
           this.registerForm.reset();
-        },
-        error: (err) => {
-          console.error(err.error.message);
-          this.isLoading = false;
         },
       });
     } else {

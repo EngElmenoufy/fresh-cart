@@ -10,10 +10,18 @@ import { ErrorsMessageComponent } from '../../../../shared/components/errors-mes
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { InputComponent } from '../../../../shared/components/input/input.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, ErrorsMessageComponent, ButtonComponent],
+  imports: [
+    ReactiveFormsModule,
+    ErrorsMessageComponent,
+    ButtonComponent,
+    InputComponent,
+    RouterLink,
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })

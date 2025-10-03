@@ -1,4 +1,5 @@
 <section>
+  @if (brands.length) {
   <app-main-header title="All Brands" />
 
   <app-responsive>
@@ -6,6 +7,7 @@
     <app-brand-card [brand]="brand" (brandDetails)="onBrandDetails($event)" />
     }
   </app-responsive>
+  }
 </section>
 
 <app-modal [(isOpened)]="isOpenModel" [brand]="selectedBrand" />

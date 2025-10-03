@@ -6,7 +6,11 @@ import { finalize, map, tap } from 'rxjs';
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
 
-  if (req.url.includes('cart') || req.url.includes('wishlist')) {
+  if (
+    req.url.includes('cart') ||
+    req.url.includes('wishlist') ||
+    req.url.includes('checkout-session')
+  ) {
     const authRequest = req.clone({
       setHeaders: {
         token: authService.getToken()!,

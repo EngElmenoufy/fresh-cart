@@ -28,7 +28,12 @@ export const errorHandlerInterceptor: HttpInterceptorFn = (req, next) => {
               'Forbidden: You do not have permission to access this resource';
             break;
           case 404:
-            errorMessage = 'Not Found: The requested resource was not found';
+            if (req.url.includes('forgotPasswords')) {
+              errorMessage =
+                'There is no user registered with this email address';
+            } else {
+              errorMessage = 'Not Found: The requested resource was not found';
+            }
             break;
           case 500:
             errorMessage = 'Internal Server Error: Please try again later';

@@ -1,18 +1,14 @@
 <section class="form">
   <h2>Login</h2>
-  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-    <div class="my-4">
-      <label for="email">Your Email</label>
-      <input id="email" type="email" placeholder="Enter Your Email" class="input w-full" formControlName="email">
-      <app-errors-message [control]="loginForm.get('email')" />
-    </div>
 
-    <div class="my-4">
-      <label for="password">Your Password</label>
-      <input id="password" type="password" placeholder="Enter Your Password" class="input w-full"
-        formControlName="password">
-      <app-errors-message [control]="loginForm.get('password')" />
-    </div>
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <app-input label="email" type="email" [control]="loginForm.get('email')" />
+    <app-input label="password" type="password" [control]="loginForm.get('password')" />
+
+    <a class="-translate-y-2 text-primary-light block w-fit font-semibold hover:underline"
+      routerLink="/forgot-password">Forgot
+      Your
+      Password?</a>
 
     <app-button [isLoading]="isLoading">
       Login

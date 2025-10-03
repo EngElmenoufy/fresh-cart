@@ -2,31 +2,32 @@
 <div class="my-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
   @if (control?.getError('email')) {
   <span class="block p-2">
-    <span class="font-medium">Danger alert!</span> The email should should contain upperCase, and more.
+    Please enter a valid email address (e.g. name&#64;example.com).
   </span>
   }
 
   @if (control?.getError('required')) {
   <span class="block p-2">
-    <span class="font-medium">Danger alert!</span> The input should be required.
+    {{label | titlecase}} is required.
   </span>
   }
 
   @if (control?.getError('minlength')) {
   <span class="block p-2">
-    <span class="font-medium">Danger alert!</span> The input should at least 3 length.
+    {{label | titlecase}} must be at least 3 characters long.
   </span>
   }
 
-  @if (control?.getError('pattern')) {
+  @if (control?.getError('pattern') && label === 'Password') {
   <span class="block p-2">
-    <span class="font-medium">Danger alert!</span> The password should match the pattern.
+    Password must be at least 8 characters and include an uppercase letter, a lowercase letter, a number, and a special
+    character.
   </span>
   }
 
-  @if (control?.getError('mismatch') && control?.get('rePassword')?.touched) {
+  @if (control?.getError('mismatch')) {
   <span class="block p-2">
-    <span class="font-medium">Danger alert!</span> The rePassword must be matched.
+    Passwords do not match.
   </span>
   }
 </div>

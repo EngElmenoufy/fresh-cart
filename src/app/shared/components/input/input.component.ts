@@ -1,16 +1,21 @@
-import { Component } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import {
+  AbstractControl,
+  FormControl,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { ErrorsMessageComponent } from '../errors-message/errors-message.component';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-input',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ErrorsMessageComponent, TitleCasePipe],
   templateUrl: './input.component.html',
   styleUrl: './input.component.css',
 })
 export class InputComponent {
-  // @Input() inputData!: {
-  //   title: string;
-  //   type: string;
-  // };
-  // @Input() control!: AbstractControl;
+  @Input() label: string = 'input';
+  @Input() type: string = 'text';
+
+  @Input() control!: any;
 }
